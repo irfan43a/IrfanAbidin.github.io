@@ -155,7 +155,8 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <div class="alert alert-success alert-dismissible fade show d-none" role="alert">
+            <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
+              <div class="alert alert-warning alert-dismissible fade show d-none my-warning" role="alert"></div>
               <strong>Terima Kasih </strong>Pesanya telak kami terima.
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -205,6 +206,7 @@
       const btnKirim = document.querySelector(".btn-kirim");
       const btnLoading = document.querySelector(".btn-loading");
       const myAlert = document.querySelector(".my-alert");
+      const myWarning = document.querySelector(".my-warning");
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -223,7 +225,11 @@
             form.reset();
             console.log("Success!", response);
           })
-          .catch((error) => console.error("Error!", error.message));
+          .catch((error) => {
+            //tampilkan warning
+            myWarning.classList.toggle("d-none");
+            console.error("Error!", error.message);
+          });
       });
     </script>
   </body>
